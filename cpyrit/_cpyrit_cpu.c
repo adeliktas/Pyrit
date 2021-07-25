@@ -1077,7 +1077,8 @@ ccmp_encrypt_openssl(const unsigned char *A0, const unsigned char *S0, const uns
     return -1;
 }
 
-#ifdef COMPILE_AESNI
+//https://github.com/JPaulMora/Pyrit/issues/591
+/*#ifdef COMPILE_AESNI
     inline __m128i
     aesni_key(__m128i a, __m128i b)
     {
@@ -1104,14 +1105,14 @@ ccmp_encrypt_openssl(const unsigned char *A0, const unsigned char *S0, const uns
 
         for (i = 0; i < keycount; i++)
         {
-            /* Setup round key from main key */
+            // Setup round key from main key
             roundkey = _mm_loadu_si128((__m128i*)&tkbuffer[i * 16]);
 
-             /* Get plaintext and XOR it with key to get AES-state */
+             // Get plaintext and XOR it with key to get AES-state
             state = _mm_loadu_si128((__m128i*)A0);
             state = _mm_xor_si128(state, roundkey);
 
-            /* Perform 10 AES-rounds on the state using the derived round keys */
+            // Perform 10 AES-rounds on the state using the derived round keys
             roundkey = aesni_key(roundkey, _mm_aeskeygenassist_si128(roundkey, 1));
             state = _mm_aesenc_si128(state, roundkey);
             roundkey = aesni_key(roundkey, _mm_aeskeygenassist_si128(roundkey, 2));
@@ -1140,7 +1141,7 @@ ccmp_encrypt_openssl(const unsigned char *A0, const unsigned char *S0, const uns
 
         return -1;
     }
-#endif /* COMPILE_AESNI */
+#endif /* COMPILE_AESNI */ //https://github.com/JPaulMora/Pyrit/issues/591
 
 PyDoc_STRVAR(CCMPCracker_solve__doc__,
              "solve(object) -> solution or None\n\n"

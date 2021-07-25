@@ -34,7 +34,7 @@
 #endif
 
 #if (defined(__AES__) && defined(__PCLMUL__))
-    #define COMPILE_AESNI
+//    #define COMPILE_AESNI //https://github.com/JPaulMora/Pyrit/issues/591
 #endif
 
 #endif /* CPUFEATURES */
