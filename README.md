@@ -2,6 +2,12 @@
 
 Pyrit is old, is outdated and it's still Python2 I am currently attempting to rewrite it from scratch, so thanks for all the stars but remember to keep an eye for Python3 version.
 
+
+Requirement Debian:
+
+sudo apt install python2-dev libpython2-dev python3-dev libpython3-dev
+
+
 # Pyrit #
 
 ![Pyrit logo](https://github.com/JPaulMora/Pyrit/blob/master/Pyrit-logo.png)
